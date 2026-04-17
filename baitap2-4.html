@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <title>Bai tap 2.4</title>
+        <style>
+            main {width: 1000px;}
+            th {
+                background-color: aquamarine;
+            }
+            table, th, td {
+                border: 4px dotted blue;
+                border-collapse: collapse;
+            }
+            td {
+                border-color: aquamarine;
+            }
+        </style>
+    </head>
+
+    <body>
+        <table id="tableForm" border="1" style="width: 1000px;">
+
+            <tr>
+                <th style="width: 50%;">Component</td>
+                <th>Display</th>
+            </tr>
+
+            <tr>
+                <td>Input Text</td>
+                <td>
+                    <input type="text" id="ipText" name="ipText">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Textarea</td>
+                <td>
+                    <textarea name="textArea" rows="4" cols="50"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Button</td>
+                <td>
+                    <button>Click Me</button>
+                </td>  
+            </tr>
+
+             <tr>
+                <td>Radio</td>
+                <td>
+                    <input type="radio" id="otp" name="otp" value="1" /> Opion 1 <br>
+                    <input type="radio" id="otp" name="otp" value="2" /> Option 2 <br>
+                    <input type="radio" id="otp" name="otp" value="3" /> Option 3 <br>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Multiple Selection</td>
+                <td>
+                    <input type="checkbox" id="cbx" name="cbx" value="1" /> Option 1
+                    <input type="checkbox" id="cbx" name="cbx" value="2" /> Option 2
+                    <input type="checkbox" id="cbx" name="cbx" value="3" /> Option 3
+                </td>
+            </tr>
+
+            <tr>
+                <td>Dropdown</td>
+                <td>
+                    <select id="dropdown" name="dropdown">
+                        <option value="volvo">Volvo</option>
+                        <option value="bmw">BMW</option>
+                        <option value="camry">Camry</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>File Select</td>
+                <td>
+                        <input type="file" id="uploadImage" name="uploadImage"
+                </td>
+            </tr>
+
+        </table>
+    </body>
+    
+</html>
