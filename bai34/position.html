@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Position</title>
+        <style>
+            /* nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background: black;
+                color: white;
+                
+            } */
+             nav {
+                position: sticky;
+                top: 0;
+                background: yellow;
+             }
+            .box-static { 
+                position: static;
+                width: 100px;
+                border: 1px solid #000;
+            }
+            .box-relative { 
+                position: relative;
+                top: 20px;
+                width: 200px;
+                border: 1px solid #000;
+            }
+            .box-scrolltop {
+                position: relative;
+                top: 80%;
+                left: 80%;
+                width: 100px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <nav>Home | Imformation | Contact</nav>
+        <h2>Position</h2>
+        <div class="box-static">Box Static</div>
+        <div class="box-relative">Box Relative</div>
+        <div class="box-scrolltop">
+            <img src="img/scroll.png"scoll top" width="100px">
+        </div>
+    </body>
+</html>
