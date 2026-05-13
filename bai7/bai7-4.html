@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+<body>
+    <h2>Quản lý sản phẩm</h2>
+    <div>
+        <button onclick="orderProducts()">Đặt hàng</button>
+        <br><br>
+        <table border="1" width="600">
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" onclick="checkAll(this)">
+                    </th>
+                    <th>Điện thoại</th>
+                    <th>Giá</th>
+                    <th>Hình ảnh</th>
+                    <th>Số lượng</th>
+                </tr>
+            </thead>
+        <tbody id="product-table"></tbody>
+        </table>
+    </div>
+
+    <h2>Sản phẩm đã đặt</h2>
+    <div>
+        <table border="1" width="600">
+            <thead>
+                <tr>
+                    <th>Điện thoại</th>
+                    <th>Số lượng</th>
+                    <th>Tổng tiền</th>
+                </tr>
+            </thead<
+        <tbody id="order-table"></tbody>
+        </table>
+    </div>
+
+    <script>
+
+        //lấy dữ liệu từ product.jon
+        let products = [];
+        let xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function () {
+
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                products = JSON.parse(xhr.responseText);
+                renderProductTable();
+                                                }
+                                            };
+        xhr.open("GET", "product.json", true);
+        xhr.send();
+
+        //hiển thị danh sách sản phẩm
+        function renderProductTable() {
+            let table = document.getElementById("product-table");
+            products.forEach((product, index) => {
+            let row =`
+            <tr>
+                <td>
+                    <input type="checkbox" class="checkbox">
+                </td>
+                <td>${product.name}</td>
+                <td class="price">${product.price}</td>
+                <td>
+                    <img src="${product.img}" width="100">
+                </td>
+                <td>
+                    <input type="number" value="1" min="1" class="quantity">
+                </td>
+             </tr>
+             `;
+            table.innerHTML += row;
+            });
+        }
+
+        //checkbox chọn tất cả
+        function checkAll(source) {
+            let checkboxes = document.querySelectorAll(".checkbox");
+            checkboxes.forEach(cb => {
+                cb.checked = source.checked;
+                                    });
+        }
+
+        //đặt hàng sử dụng callback, promoise
+        function orderProducts() {
+            let rows = document.querySelectorAll("#product-table tr");
+            let selectedProducts = [];
+
+            rows.forEach((row, index) => {
+
+                let checkbox = row.querySelector(".checkbox");
+                
+                if (checkbox && checkbox.checked) {
+
+                    let quantity = row.querySelector(".quantity").value;
+                    let priceNumber = products [index].price;
+
+                    selectedProducts.push({
+                        name: products [index].name,
+                        price: priceNumber,
+                        quantity: Number(quantity)
+                                            });
+                                                    }
+                                            });
+
+                if (selectedProducts.length === 0) {
+                    alert("Ban chưa chọn sản phẩm");
+                    return;
+                }
+
+        shuffleProducts (selectedProducts, function (shuffledList){
+            renderorderAsync(shuffledList)
+                .then(result => {
+                renderOrderTable(result);
+                                });
+                                                                    });
+        }
+
+        //xáo trộn sản phẩm 
+        function shuffleProducts(list, callback) {
+            let shuffled = [...list];
+            shuffled.sort(() => Math.random()-0.5);
+            callback(shuffled);
+        }
+
+        //render ra sản phẩm đã đặt set timeout 1s
+        function renderOrderAsync(list) {
+            return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(list);
+                                });
+                                            }, 1000);
+        }
+
+        //render table sản phẩm đã đặt
+        function renderOrderTable(list) {
+            let orderTable = document.getElementById("order-table");
+            orderTable.innerHTML = ""
+
+            list.forEach (product => {
+                let total = product.price * product.quantity;
+                let row = `
+                <tr>
+                    <td>${product.name}</td>
+                    <td>${product.quantity}</td>
+                    <td>${total.toLocaleString()} VND</td>
+                </tr>
+                `;
+            orderTable.innerHTML += row;
+                                        });
+        }
+    </script>
+</body>
+</html>

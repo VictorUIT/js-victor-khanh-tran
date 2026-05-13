@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+<body>
+    <button onclick="batDongBo()">Chạy bất đồng bộ</button>
+    <div id="step"></div>
+    <script>
+        function batDongBo(){
+            setTimeout(() => {
+                document.getElementById("step").innerHTML = "Bước 2";
+            }, 2000);
+
+            document.getElementByld("step").innerHTML = "Bước 1";
+        }
+    </script>
+</body>
+</html>

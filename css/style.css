@@ -1,0 +1,38 @@
+.intro-text {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.highlight-box {
+  color: blue;
+  margin-bottom: 10px;
+}
+
+.conclusion-text {
+  color: green;
+  margin-bottom: 10px;
+}
+
+.login-container {
+  background: white;
+  padding: 0px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+input {
+  display: block;
+  width: 400px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+button {
+  width: 425px;
+  padding: 10px;
+  background-color: rgb(91, 137, 91);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

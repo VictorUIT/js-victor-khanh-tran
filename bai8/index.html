@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+<body>
+    <form id="registerF orm"> index.html
+        <input type="text" id="firstname" value="A"/>
+        <input type="text" id="lastname" value="Nguyễn Văn"/>
+        <button type="submit">Đăng ký</button>
+    </form>
+
+    <script>
+        document.getElementByld("registerF orm").addEventListener("submit",
+        function(event){
+        });
+        event.preventDefault(); // ngăn reload trang
+        let firstName = document.getElementByld("firstname").value;
+        let lastName = document.getElementByld("lastname").value;
+        alert("Họ tên: " + firstName + "" + lastName);
+    </script>
+
+</body>
+</html>
